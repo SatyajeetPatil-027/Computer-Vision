@@ -1,0 +1,88 @@
+from google.colab import drive
+drive.mount('/content/drive')
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+import cv2 as cv
+import sys
+from google.colab.patches import cv2_imshow
+import os # Import the os module
+
+# Attempting to load image directly with the path
+image_path = "/content/drive/MyDrive/C.V/Color Image.jpg"
+
+# Check if the file exists
+if not os.path.exists(image_path):
+    sys.exit(f"Error: Image file not found at {image_path}")
+
+img = cv.imread(image_path)
+
+if img is None:
+    sys.exit("Could not read the image.")
+
+cv2_imshow(img)
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+import cv2 as cv
+import sys
+from google.colab.patches import cv2_imshow
+import os # Import the os module
+
+# Attempting to load image directly with the path
+image_path = "/content/drive/MyDrive/C.V/Greyscale.jpg"
+
+# Check if the file exists
+if not os.path.exists(image_path):
+    sys.exit(f"Error: Image file not found at {image_path}")
+
+img = cv.imread(image_path)
+
+if img is None:
+    sys.exit("Could not read the image.")
+
+cv2_imshow(img)
+
+image = cv.imread("/content/drive/MyDrive/C.V/Greyscale.jpg")
+alpha =3.2
+beta = 38
+adjusted = cv.convertScaleAbs(image, alpha=alpha, beta=beta)
+cv2_imshow(adjusted)
+
+image = cv.imread("/content/drive/MyDrive/C.V/Color Image.jpg")
+alpha =4.3
+beta = 40
+adjusted = cv.convertScaleAbs(image, alpha=alpha, beta=beta)
+cv2_imshow(adjusted)
+
+import cv2 as cv
+import numpy as np
+from matplotlib import pyplot as plt
+
+img = cv.imread('/content/drive/MyDrive/C.V/Color Image.jpg')
+assert img is not None, "file could not be read, check with os.path.exists()"
+
+blur = cv.blur(img,(30,20))
+
+plt.subplot(121),plt.imshow(img),plt.title('Original Image')
+plt.xticks([]), plt.yticks([])
+plt.subplot(122),plt.imshow(blur),plt.title('Blur Image')
+plt.xticks([]), plt.yticks([])
+plt.show()
+
+from google.colab import drive
+drive.mount('/content/drive')
+import cv2
+import numpy as np
+from google.colab.patches import cv2_imshow # Import cv2_imshow
+
+img = cv2.imread('/content/drive/MyDrive/C.V/Salt image.jpg')
+
+median = cv2.medianBlur(img,3)
+
+# Display original and blurred images using cv2_imshow
+cv2_imshow(img)
+cv2_imshow(median)
+
