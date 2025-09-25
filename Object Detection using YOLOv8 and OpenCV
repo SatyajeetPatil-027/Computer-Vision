@@ -1,0 +1,23 @@
+from google.colab import drive
+drive.mount('/content/drive')
+
+import cv2
+import matplotlib.pyplot as plt
+from ultralytics import YOLO
+import glob
+model = YOLO('yolov8n.pt')
+
+def run_yolo_on_images(image_paths):
+    for img_path in image_paths:
+        results = model(img_path)
+
+        for r in results:
+             im_array = r.plot()  # plot a BGR numpy array of predictions
+             im_rgb = cv2.cvtColor(im_array, cv2.COLOR_BGR2RGB)  # convert to RGB
+             plt.figure(figsize=(10,7))
+             plt.imshow(im_rgb)
+             plt.title(f"Detections: {img_path}")
+             plt.axis('off')
+             plt.show()
+folder = glob.glob('/content/drive/MyDrive/C.V/traffic/*.jpg')
+run_yolo_on_images(folder)
